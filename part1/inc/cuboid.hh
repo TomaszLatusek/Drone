@@ -19,4 +19,5 @@ public:
     {
         translation = translation + change;
     }
+    void rotate(double angle);
 };

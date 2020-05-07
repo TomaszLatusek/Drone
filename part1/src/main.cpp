@@ -33,6 +33,7 @@ int main()
     translation[1] = 50;
     translation[2] = 50;
 
+    cuboid.rotate(45);
     cuboid.translate(translation);
     cuboid.draw(kDroneFile);
 

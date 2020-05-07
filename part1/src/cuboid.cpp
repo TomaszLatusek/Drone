@@ -1,6 +1,8 @@
 #include "cuboid.hh"
+#include "Matrix.hh"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -39,5 +41,16 @@ void Cuboid::draw(std::string filename) const
         {
             outputFile << "#\n\n";
         }
+    }
+}
+
+void Cuboid::rotate(double angle)
+{
+    /* Wstepna proba czy to w ogole dziala */
+    for(int i=0;i<points.size();i++){
+        double x = points[i][0];
+        double y = points[i][1];
+            points[i][0] = x*cos(angle) - y*sin(angle);
+            points[i][1] = x*sin(angle) + y*cos(angle);
     }
 }

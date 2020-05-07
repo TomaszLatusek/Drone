@@ -192,13 +192,13 @@ std::istream &operator>>(std::istream &stream, Vector<T, SIZE> &vec)
   for (int i = 0; i < SIZE; i++)
   {
     stream >> vec[i];
-    if (stream.fail())
-    {
-      stream.clear();
-      stream.ignore(32767, '\n');
-      std::cerr << "[!] Vector error." << std::endl;
-      return stream;
-    }
+    // if (stream.fail())
+    // {
+    //   stream.clear();
+    //   stream.ignore(32767, '\n');
+    //   std::cerr << "[!] Vector error." << std::endl;
+    //   return stream;
+    // }
   }
 
   return stream;
@@ -217,16 +217,11 @@ std::istream &operator>>(std::istream &stream, Vector<T, SIZE> &vec)
 template <typename T, int SIZE>
 std::ostream &operator<<(std::ostream &stream, const Vector<T, SIZE> &vec)
 {
-  std::cout << "(";
   for (int i = 0; i < SIZE; i++)
   {
-    stream << vec[i];
-    if (i < SIZE - 1)
-    {
-      std::cout << ", ";
-    }
+    stream << vec[i] << " ";
   }
-  stream << ")" << std::endl;
+
 
   return stream;
 }
