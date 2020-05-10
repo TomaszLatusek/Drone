@@ -9,14 +9,13 @@
 ///////////////* Szablon klasy dla macierzy *//////////////////////
 ///////////////////////////////////////////////////////////////////
 template <typename T, int SIZE>
-class Matrix
-{
+class Matrix{
   /* macierz kwadratowa przedstawiona w postaci tablicy wektorow (kolumn)
    * SIZE wektorow SIZE-wymiarowych*/
+protected:
   Vector<T, SIZE> data[SIZE];
 
 public:
-  Matrix(char axis, double angle);
   /* przeciazenia nawiasow do indeksowania */
   const T &operator()(int row, int column) const;
   T &operator()(int row, int column);
@@ -35,36 +34,6 @@ public:
 ///////////////////////////////////////////////////////////////////
 ////////////////////////* ciala metod *////////////////////////////
 ///////////////////////////////////////////////////////////////////
-template <typename T, int SIZE>
-Matrix<T,SIZE>::Matrix(char axis, double angle)
-{
-  switch(axis){
-    case 'z':
-    data[0][0] = cos(angle);
-    data[0][1] = sin(angle);
-    data[0][2] = 0;
-    data[1][0] = -sin(angle);
-    data[1][1] = cos(angle);
-    data[1][2] = 0;
-    data[2][0] = 0;
-    data[2][1] = 0;
-    data[2][2] = 1;
-    break;
-    case 'x':
-    data[0][0] = 1;
-    data[0][1] = 0;
-    data[0][2] = 0;
-    data[1][0] = 0;
-    data[1][1] = cos(angle);
-    data[1][2] = sin(angle);
-    data[2][0] = 0;
-    data[2][1] = -sin(angle);
-    data[2][2] = cos(angle);
-    break;
-  }
-}
-
-
 /* Operator indeksowania macierzy.
  * Argumenty:
  *      row - nr wiersza - 1,

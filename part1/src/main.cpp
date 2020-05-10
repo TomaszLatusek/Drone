@@ -4,7 +4,7 @@
 #include <string>
 
 #include "gnuplot_link.hh"
-#include "cuboid.hh"
+#include "Cuboid.hh"
 
 using namespace std;
 
@@ -65,7 +65,7 @@ do
         cout << "Enter the angle of rotation" << endl
              << "> ";
         cin >> angleZ;
-        cuboid.rotate('z',angleZ);
+        cuboid.rotate(angleZ);
         cuboid.draw(kDroneFile);
         link.Draw();
         break;
@@ -76,7 +76,7 @@ do
         cout << "Enter the distance" << endl
              << "> ";
         cin >> distance;
-        cuboid.move(angleZ,angleXY,distance);
+        cuboid.move(angleXY,distance);
         cuboid.draw(kDroneFile);
         link.Draw();
         break;
