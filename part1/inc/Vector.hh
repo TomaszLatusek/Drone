@@ -21,9 +21,12 @@ public:
   T operator*(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator*(T arg);
   Vector<T, SIZE> operator/(T arg);
+  Vector<T,SIZE> operator+=(T arg);
 /* dlugosc wektora */
   double length() const;
 };
+
+
 
 
 
@@ -171,6 +174,16 @@ Vector<T, SIZE> Vector<T, SIZE>::operator/(T arg)
   return result;
 }
 
+template <typename T, int SIZE>
+Vector<T,SIZE> Vector<T,SIZE>::operator+=(T arg)
+{
+  for(int i = 0; i < SIZE; i++)
+  {
+    coordinates[i] += arg[i];
+  }
+  return this;
+}
+
 
 
 ///////////////////////////////////////////////////////////////////
@@ -192,13 +205,6 @@ std::istream &operator>>(std::istream &stream, Vector<T, SIZE> &vec)
   for (int i = 0; i < SIZE; i++)
   {
     stream >> vec[i];
-    // if (stream.fail())
-    // {
-    //   stream.clear();
-    //   stream.ignore(32767, '\n');
-    //   std::cerr << "[!] Vector error." << std::endl;
-    //   return stream;
-    // }
   }
 
   return stream;
@@ -225,3 +231,6 @@ std::ostream &operator<<(std::ostream &stream, const Vector<T, SIZE> &vec)
 
   return stream;
 }
+
+
+
