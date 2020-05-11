@@ -10,4 +10,5 @@ protected:
 public:
     void translate(Vector3D change)
         {translation = translation + change;}
+    inline static int counter = 0;
 };

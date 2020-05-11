@@ -1,8 +1,6 @@
 #pragma once
 
 #include <iostream>
-using Vector3D = Vector<double,3>;
-
 ///////////////////////////////////////////////////////////////////
 ///////////////* Szablon klasy dla wektora *///////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -20,7 +18,7 @@ public:
   Vector<T, SIZE> operator-(Vector<T, SIZE> vec2) const;
   T operator*(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator*(T arg);
-  Vector<T, SIZE> operator/(T arg);
+  Vector<T, SIZE> operator/(T arg) const;
   Vector<T,SIZE> operator+=(T arg);
 /* dlugosc wektora */
   double length() const;
@@ -156,7 +154,7 @@ Vector<T, SIZE> Vector<T, SIZE>::operator*(T arg)
  *    w przypadku arg=0 zwraca wejsciowy wektor
  */
 template <typename T, int SIZE>
-Vector<T, SIZE> Vector<T, SIZE>::operator/(T arg)
+Vector<T, SIZE> Vector<T, SIZE>::operator/(T arg) const
 {
   Vector<T, SIZE> result;
 
@@ -231,6 +229,10 @@ std::ostream &operator<<(std::ostream &stream, const Vector<T, SIZE> &vec)
 
   return stream;
 }
+
+
+using Vector3D = Vector<double,3>;
+
 
 
 

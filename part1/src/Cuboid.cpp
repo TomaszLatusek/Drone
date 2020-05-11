@@ -1,9 +1,11 @@
 #include "Cuboid.hh"
 #include "Matrix3D.hh"
 #include "Matrix.hh"
+#include "gnuplot_link.hh"
 #include <fstream>
 #include <iostream>
 #include <cmath>
+
 
 using namespace std;
 
@@ -24,10 +26,14 @@ Cuboid::Cuboid() : angle{0}
         points.push_back(point);
     }
     inputFile.close();
+
+    counter++;
 }
 
 void Cuboid::draw(std::string filename) const
 {
+    const string kDroneFile("solid/drone.dat");
+
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
@@ -37,15 +43,14 @@ void Cuboid::draw(std::string filename) const
     }
 
     Matrix3D rotation(angle);
-
-    for (unsigned i = 0; i < points.size(); ++i)
-    {
-        outputFile << (rotation * points[i]) + translation << endl;
-        if (i % 4 == 3) // triggers after every 4 points
+        for (unsigned i = 0; i < points.size(); ++i)
         {
-            outputFile << "#\n\n";
+            outputFile << (rotation * points[i]) + translation << endl;
+            if (i % 4 == 3) // triggers after every 4 points
+            {
+                outputFile << "#\n\n";
+            }
         }
-    }
 }
 
 void Cuboid::move(double angleXY, double distance)
@@ -53,10 +58,12 @@ void Cuboid::move(double angleXY, double distance)
     angleXY *= M_PI / 180; //degrees to radians
     Vector3D change;
 
-    for(int i=0;i<points.size();i++){
-        change[0] = distance*cos(angleXY)*cos(angle);
-        change[1] = distance*cos(angleXY)*sin(angle);
-        change[2] = distance * sin(angleXY);  
+    for (int i = 0; i < points.size(); i++)
+    {
+        change[0] = distance * cos(angleXY) * cos(angle);
+        change[1] = distance * cos(angleXY) * sin(angle);
+        change[2] = distance * sin(angleXY);
     }
     translate(change);
+ 
 }
