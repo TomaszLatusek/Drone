@@ -6,7 +6,6 @@
 #include <iostream>
 #include <cmath>
 
-
 using namespace std;
 
 Cuboid::Cuboid() : angle{0}
@@ -41,14 +40,15 @@ void Cuboid::draw(std::string filename) const
     }
 
     Matrix3D rotation(angle);
-        for (unsigned i = 0; i < points.size(); ++i)
+
+    for (unsigned i = 0; i < points.size(); ++i)
+    {
+        outputFile << (rotation * points[i]) + translation << endl;
+        if (i % 4 == 3) // triggers after every 4 points
         {
-            outputFile << (rotation * points[i]) + translation << endl;
-            if (i % 4 == 3) // triggers after every 4 points
-            {
-                outputFile << "#\n\n";
-            }
+            outputFile << "#\n\n";
         }
+    }
 }
 
 void Cuboid::move(double angleXY, double distance)
@@ -63,5 +63,19 @@ void Cuboid::move(double angleXY, double distance)
         change[2] = distance * sin(angleXY);
     }
     translate(change);
- 
+}
+
+bool Cuboid::position() const
+{
+    if (translation[2] >= 175)
+    {
+        cout << "You made it to the surface!" << endl;
+        return 1;
+    }
+    else if (translation[2] <= -200)
+    {
+        cout << "You hit the bottom!" << endl;
+        return 1;
+    }
+    return 0;
 }

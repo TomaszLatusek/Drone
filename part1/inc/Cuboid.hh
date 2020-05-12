@@ -16,4 +16,5 @@ public:
     void rotate(double change)
         {angle += (change*M_PI/180);}//degrees to radians
     void move(double angle, double distance);
+    bool position() const;
 };

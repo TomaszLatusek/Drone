@@ -89,13 +89,16 @@ int main()
             cin >> distance;
             for (int i = 0; i < abs(distance); i++)
             {
+                
                 if(distance > 0)
                     {cuboid.move(angleXY, 1);}
                 else{cuboid.move(angleXY, -1);}
-                cuboid.draw(kDroneFile);
-                link.Draw();
-                sleep_for(milliseconds(5));
-                sleep_until(system_clock::now());
+                if(!cuboid.position()){
+                    cuboid.draw(kDroneFile);
+                    link.Draw();
+                    sleep_for(milliseconds(5));
+                    sleep_until(system_clock::now());
+                } else break;
             }
             break;
         case 'm':
