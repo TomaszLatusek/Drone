@@ -5,6 +5,7 @@
 
 class Shape{
 protected:
+    std::string filename;
     std::vector<Vector3D> points;
     Vector3D translation;
 public:

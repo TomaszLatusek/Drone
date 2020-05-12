@@ -7,37 +7,41 @@
 
 #include "gnuplot_link.hh"
 #include "Cuboid.hh"
+#include "BottomSurface.hh"
+#include "WaterSurface.hh"
+#include "Scene.hh"
+
 
 using namespace std;
 
 const string kDroneFile("solid/drone.dat");
+const string kBottomFile("solid/bottom.dat");
+const string kWaterFile("solid/water.dat");
 
 int main()
 {
-    Cuboid cuboid;                    // To tylko przykladowe definicje zmiennej
-    PzG::GnuplotLink link;            // Ta zmienna jest potrzebna do wizualizacji
     using namespace std::this_thread; // sleep_for, sleep_until
     using namespace std::chrono;      // nanoseconds, system_clock, seconds
-
+    
+    Cuboid cuboid;  
+    WaterSurface water;                 
+    BottomSurface bottom;
+    Scene scene(cuboid,water,bottom);
+    PzG::GnuplotLink link;            // Ta zmienna jest potrzebna do wizualizacji
+    
     link.Init();
     link.AddFilename(kDroneFile.c_str(), PzG::LS_CONTINUOUS, 1);
+    link.AddFilename(kWaterFile.c_str(), PzG::LS_CONTINUOUS, 1);
+    link.AddFilename(kBottomFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.SetDrawingMode(PzG::DM_3D);
 
     cuboid.draw(kDroneFile);
+    water.draw(kWaterFile);
+    bottom.draw(kBottomFile);
 
     link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-    cout << "Naciśnij ENTER, aby kontynuowac" << endl;
+    cout << "Press ENTER to continue." << endl;
     cin.ignore(100000, '\n');
-
-    Vector3D translation;
-
-    // cuboid.rotate(-45);
-    // cuboid.translate(translation);
-    // cuboid.draw(kDroneFile);
-
-    // link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-    // cout << "Naciśnij ENTER, aby kontynuowac" << endl;
-    // cin.ignore(100000, '\n');
 
     char option;
     double angleZ = 0, angleXY, distance;
@@ -75,9 +79,6 @@ int main()
                 sleep_for(milliseconds(5));
                 sleep_until(system_clock::now());
             }
-            // cuboid.rotate(angleZ);
-            // cuboid.draw(kDroneFile);
-            // link.Draw();
             break;
         case 'r':
             cout << "Enter the angle of movement (up/down)" << endl

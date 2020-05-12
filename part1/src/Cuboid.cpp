@@ -32,8 +32,6 @@ Cuboid::Cuboid() : angle{0}
 
 void Cuboid::draw(std::string filename) const
 {
-    const string kDroneFile("solid/drone.dat");
-
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
