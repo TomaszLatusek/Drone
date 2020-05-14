@@ -4,6 +4,12 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Water Surface:: Water Surface object
+ * 
+ * Initializes points with values from solid/bottomRead.dat
+ * Simple zigzag pattern
+ */
 WaterSurface::WaterSurface()
 {
     ifstream inputFile;
@@ -19,13 +25,17 @@ WaterSurface::WaterSurface()
     while (inputFile >> point)
     {
         points.push_back(point);
+        counter++;
     }
     inputFile.close();
-
-    counter++;
 }
 
 
+/**
+ * @brief Saves points values to a new file which gnuplot can use
+ * 
+ * @param filename name of the file you want gnuplot to draw from
+ */
 void WaterSurface::draw(std::string filename) const
 {
     ofstream outputFile;
@@ -39,9 +49,5 @@ void WaterSurface::draw(std::string filename) const
         for (unsigned i = 0; i < points.size(); ++i)
         {
             outputFile << points[i] << endl;
-            if (i % 4 == 3) // triggers after every 4 points
-            {
-                outputFile << "#\n\n";
-            }
         }
 }

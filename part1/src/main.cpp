@@ -14,6 +14,7 @@
 
 using namespace std;
 
+//filenames
 const string kDroneFile("solid/drone.dat");
 const string kBottomFile("solid/bottom.dat");
 const string kWaterFile("solid/water.dat");
@@ -26,30 +27,32 @@ int main()
     Cuboid cuboid;  
     WaterSurface water;                 
     BottomSurface bottom;
-    Scene scene(cuboid,water,bottom);
-    PzG::GnuplotLink link;            // Ta zmienna jest potrzebna do wizualizacji
+    Scene scene(cuboid,water,bottom); // Don't really know how to use it yet
+    PzG::GnuplotLink link;            // Variable needed for vizualization
     
+    // gnuplot stuff
     link.Init();
     link.AddFilename(kDroneFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.AddFilename(kWaterFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.AddFilename(kBottomFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.SetDrawingMode(PzG::DM_3D);
 
+    //drawing time
     cuboid.draw(kDroneFile);
     water.draw(kWaterFile);
     bottom.draw(kBottomFile);
 
-    link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+    link.Draw(); // <- Here gnuplot draws what we saved to file
     cout << "Press ENTER to continue." << endl;
     cin.ignore(100000, '\n');
 
     char option;
     double angleZ = 0, angleXY, distance;
-    int i = 1;
+    int i = 1; // =1 to show menu in the first "do while" loop
 
     do
     {
-        if (i)
+        if (i) 
         {
             cout << endl
                  << "r - movement" << endl
@@ -69,6 +72,7 @@ int main()
             cout << "Enter the angle of rotation" << endl
                  << "> ";
             cin >> angleZ;
+            // animation part
             for (int i = 0; i < abs(angleZ); i++)
             {
                 if(angleZ > 0)
@@ -87,12 +91,13 @@ int main()
             cout << "Enter the distance" << endl
                  << "> ";
             cin >> distance;
+            // animation part
             for (int i = 0; i < abs(distance); i++)
             {
-                
                 if(distance > 0)
                     {cuboid.move(angleXY, 1);}
                 else{cuboid.move(angleXY, -1);}
+                // checking the height
                 if(!cuboid.position()){
                     cuboid.draw(kDroneFile);
                     link.Draw();
@@ -101,16 +106,18 @@ int main()
                 } else break;
             }
             break;
-        case 'm':
+        case 'm': // shows menu again
             i++;
             break;
-        case 'k':
+        case 'k': // exits
             return 0;
             break;
         default:
             cout << "[!] No such option." << endl;
         }
 
+        cout << "Number of Vector3D objects: " << Shape::counter << endl
+        << endl;
     } while (option != 'k');
 
     return 1;

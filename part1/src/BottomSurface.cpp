@@ -4,6 +4,12 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Bottom Surface:: Bottom Surface object
+ * 
+ * Initializes points with values from solid/bottomRead.dat
+ * Simple zigzag pattern
+ */
 BottomSurface::BottomSurface()
 {
     ifstream inputFile;
@@ -19,13 +25,17 @@ BottomSurface::BottomSurface()
     while (inputFile >> point)
     {
         points.push_back(point);
+        counter++;
     }
     inputFile.close();
-
-    counter++;
 }
 
 
+/**
+ * @brief Saves points values to a new file which gnuplot can use
+ * 
+ * @param filename name of the file you want gnuplot to draw from
+ */
 void BottomSurface::draw(std::string filename) const
 {
     ofstream outputFile;
@@ -39,9 +49,5 @@ void BottomSurface::draw(std::string filename) const
         for (unsigned i = 0; i < points.size(); ++i)
         {
             outputFile << points[i] << endl;
-            if (i % 4 == 3) // triggers after every 4 points
-            {
-                outputFile << "#\n\n";
-            }
         }
 }

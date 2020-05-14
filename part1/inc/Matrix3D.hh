@@ -6,6 +6,14 @@
 class Matrix3D : public Matrix<double,3>
 {
 public:
+/**
+ * @brief Construct a new Matrix3D object
+ * Calculates the matrix of rotation.
+ * (Didn't really want to make new .cpp file 
+ * for this one constructor.)
+ * 
+ * @param angle rotation angle
+ */
     Matrix3D(double angle)
     {
         data[0][0] = cos(angle);

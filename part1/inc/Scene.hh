@@ -8,7 +8,7 @@
 class Scene{
     WaterSurface water;
     BottomSurface bottom;
-    Cuboid drone; //trzeba bedzie dodac klase drona, ale na razie obejdzie sie bez niej
+    Cuboid drone; // Drone class coming next, not yet though
     // vector<Cuboid> objects;
 
     public:
