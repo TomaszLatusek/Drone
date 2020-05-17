@@ -1,0 +1,13 @@
+digraph "Cuboid::rotate"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node17 [label="Cuboid::rotate",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="Cuboid::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#a32b28585f2cec1e96a6af391d47965ba",tooltip="Calculates the translation vector according to the rotation angle, rise/dive angle and the distance..."];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="Shape::translate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shape.html#a135869c3223353a8f8fe1467889f355b"];
+  Node17 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="Cuboid::position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cuboid.html#aaae402991881c2b4885cf2e510569a69",tooltip="Used to stop the animation when it hits the bottom or reaches the surface. "];
+}
