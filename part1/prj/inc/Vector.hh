@@ -2,26 +2,22 @@
 
 #include <iostream>
 ///////////////////////////////////////////////////////////////////
-///////////////* Szablon klasy dla wektora *///////////////////////
+///////////////////* Vector class template *///////////////////////
 ///////////////////////////////////////////////////////////////////
 template <typename T, int SIZE>
 class Vector{
-/* wspolrzedne wektora */
   T coordinates[SIZE];
-
 public:
-/* przeciazenia nawiasow do indeksowania */
+/* getters overloads */
   const T &operator[](int index) const;
   T &operator[](int index);
-/* przeciazenia operatorow dzialan na wektorach */
+/* operation overloads */
   Vector<T, SIZE> operator+(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator-(Vector<T, SIZE> vec2) const;
   T operator*(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator*(T arg);
   Vector<T, SIZE> operator/(T arg) const;
   Vector<T,SIZE> operator+=(T arg);
-/* dlugosc wektora */
-  double length() const;
 };
 
 
@@ -29,16 +25,16 @@ public:
 
 
 ///////////////////////////////////////////////////////////////////
-////////////////////////* ciala metod *////////////////////////////
+////////////////////////////* methods *////////////////////////////
 ///////////////////////////////////////////////////////////////////
-
-/* Operator indeksowania wektora.
- * Argument:
- *      index - nr indeksu - 1.
- * Zwraca:
- *      wartosc danego indeksu wektora
+/**
+ * @brief Gets specific vector element 
+ *        (const version)
  * 
- * Wersja const
+ * @tparam T        vector data type
+ * @tparam SIZE     vector size
+ * @param index     number of element -1
+ * @return const T& value of the element 
  */
 template <typename T, int SIZE>
 const T &Vector<T, SIZE>::operator[](int index) const
@@ -49,7 +45,15 @@ const T &Vector<T, SIZE>::operator[](int index) const
   }
   return coordinates[index];
 }
-/* Wersja nie-const
+
+/**
+ * @brief Gets specific vector element 
+ *        (non-const version)
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param index      number of element -1
+ * @return T&        value of the element 
  */
 template <typename T, int SIZE>
 T &Vector<T, SIZE>::operator[](int index)
@@ -59,12 +63,14 @@ T &Vector<T, SIZE>::operator[](int index)
 
 
 
-/* Realizuje dodawanie wektorow.
- * Argumenty:
- *    niejawny wskaznik na klase Vector - pierwszy skladnik dodawania,
- *    vec2 - drugi skladnik dodawania.
- * Zwraca:
- *    result - suma argumentow.
+
+/**
+ * @brief Vector addition
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param vec2       vector
+ * @return Vector<T, SIZE> summary 
  */
 template <typename T, int SIZE>
 Vector<T, SIZE> Vector<T, SIZE>::operator+(Vector<T, SIZE> vec2) const
@@ -79,12 +85,14 @@ Vector<T, SIZE> Vector<T, SIZE>::operator+(Vector<T, SIZE> vec2) const
 
 
 
-/* Realizuje odejmowanie wektorow.
- * Argumenty:
- *    niejawny wskaznik na klase Vector - pierwszy skladnik odejmowania,
- *    vec2 - drugi skladnik odejmowania.
- * Zwraca:
- *    result - roznica argumentow.
+
+/**
+ * @brief Vector subtraction
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param vec2        vector
+ * @return Vector<T, SIZE>  difference
  */
 template <typename T, int SIZE> 
 Vector<T, SIZE> Vector<T, SIZE>::operator-(Vector<T, SIZE> vec2) const
@@ -100,12 +108,14 @@ Vector<T, SIZE> Vector<T, SIZE>::operator-(Vector<T, SIZE> vec2) const
 
 
 
-/* Realizuje mnozenie skalarne wektorow.
- * Argumenty:
- *    niejawny wskaznik na klase Vector - pierwszy skladnik mnozenia,
- *    vec2 - drugi skladnik mnozenia.
- * Zwraca:
- *    result - iloczyn skalarny wektorow.
+
+/**
+ * @brief Scalar multiplication
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param vec2        vector
+ * @return T          scalar product
  */
 template <typename T, int SIZE>
 T Vector<T, SIZE>::operator*(Vector<T, SIZE> vec2) const
@@ -122,12 +132,14 @@ T Vector<T, SIZE>::operator*(Vector<T, SIZE> vec2) const
 
 
 
-/* Realizuje mnozenie wektora przez liczbe.
- * Argumenty:
- *    niejawny wskaznik na klase Vector - pierwszy skladnik mnozenia,
- *    arg - drugi skladnik mnozenia.
- * Zwraca:
- *    result - wektor przemnozony przez wartosc arg.
+
+/**
+ * @brief Multiplying the vector by the number
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param arg        the number
+ * @return Vector<T, SIZE>  result
  */
 template <typename T, int SIZE>
 Vector<T, SIZE> Vector<T, SIZE>::operator*(T arg)
@@ -144,14 +156,14 @@ Vector<T, SIZE> Vector<T, SIZE>::operator*(T arg)
 
 
 
-/* Realizuje dzielenie wektora przez liczbe.
- * Argumenty:
- *    niejawny wskaznik na klase Vector - pierwszy skladnik dzielenia,
- *    arg - drugi skladnik dzielenia.
- * Zwraca:
- *    result - wektor podzielony przez wartosc arg.
- * Uwaga:
- *    w przypadku arg=0 zwraca wejsciowy wektor
+
+/**
+ * @brief Dividing a vector by a number
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param arg        the number (can't be 0!)
+ * @return Vector<T, SIZE>  result
  */
 template <typename T, int SIZE>
 Vector<T, SIZE> Vector<T, SIZE>::operator/(T arg) const
@@ -172,6 +184,16 @@ Vector<T, SIZE> Vector<T, SIZE>::operator/(T arg) const
   return result;
 }
 
+
+
+/**
+ * @brief += overload
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param arg        the number
+ * @return Vector<T,SIZE> summary 
+ */
 template <typename T, int SIZE>
 Vector<T,SIZE> Vector<T,SIZE>::operator+=(T arg)
 {
@@ -185,17 +207,16 @@ Vector<T,SIZE> Vector<T,SIZE>::operator+=(T arg)
 
 
 ///////////////////////////////////////////////////////////////////
-///////////* przeciazenia operatorow "strumieniowych" *////////////
+////////////////////* iostream overloads */////////////////////////
 ///////////////////////////////////////////////////////////////////
-
-/* Realizuje wczytywanie wartosci wspolrzednych wektora
- * ze standardowego wejscia.
- * Argumenty:
- *    stream - input stream,
- *    vec - wektor.
- * Uwaga:
- *    wartosci wspolrzednych wektora (vec.coordinates[])
- *    moga byc tylko liczbami
+/**
+ * @brief Saves values from input to the vector
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param stream     input stream
+ * @param vec        the vector
+ * @return std::istream& 
  */
 template <typename T, int SIZE>
 std::istream &operator>>(std::istream &stream, Vector<T, SIZE> &vec)
@@ -218,6 +239,16 @@ std::istream &operator>>(std::istream &stream, Vector<T, SIZE> &vec)
  *    wartosci wspolrzednych wektora (vec.coordinates[])
  *    moga byc tylko liczbami
  */
+
+/**
+ * @brief Writes the vector to output stream
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param stream     output stream
+ * @param vec        the vector
+ * @return std::ostream& 
+ */
 template <typename T, int SIZE>
 std::ostream &operator<<(std::ostream &stream, const Vector<T, SIZE> &vec)
 {
@@ -226,13 +257,14 @@ std::ostream &operator<<(std::ostream &stream, const Vector<T, SIZE> &vec)
     stream << vec[i] << " ";
   }
 
-
   return stream;
 }
 
-
+/**
+ * @brief Vector3D alias 
+ * 
+ */
 using Vector3D = Vector<double,3>;
-
 
 
 

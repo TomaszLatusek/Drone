@@ -72,16 +72,20 @@ $(document).ready(function(){initNavTree('class_matrix.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5bdbb67263845cf3ce60222f9be72265"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a5bdbb67263845cf3ce60222f9be72265">operator()</a> (int row, int column) const</td></tr>
+<tr class="memdesc:a5bdbb67263845cf3ce60222f9be72265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets specific matrix element.  <a href="#a5bdbb67263845cf3ce60222f9be72265">More...</a><br /></td></tr>
 <tr class="separator:a5bdbb67263845cf3ce60222f9be72265"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a132297ce45e420d69a1d0758b6c727a6"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a132297ce45e420d69a1d0758b6c727a6">operator()</a> (int row, int column)</td></tr>
 <tr class="separator:a132297ce45e420d69a1d0758b6c727a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ea5576ec2d0a3c2da9690e6fb38097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector.html">Vector</a>&lt; T, SIZE &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#af7ea5576ec2d0a3c2da9690e6fb38097">operator[]</a> (int index)</td></tr>
+<tr class="memdesc:af7ea5576ec2d0a3c2da9690e6fb38097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets column of a matrix.  <a href="#af7ea5576ec2d0a3c2da9690e6fb38097">More...</a><br /></td></tr>
 <tr class="separator:af7ea5576ec2d0a3c2da9690e6fb38097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b612fd8d7fcdef475f179aebd042b65"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a8b612fd8d7fcdef475f179aebd042b65">determinant</a> () const</td></tr>
 <tr class="separator:a8b612fd8d7fcdef475f179aebd042b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35d31f3f4eb728f4e29d8f8a4ac071a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector.html">Vector</a>&lt; T, SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a35d31f3f4eb728f4e29d8f8a4ac071a0">operator*</a> (<a class="el" href="class_vector.html">Vector</a>&lt; T, SIZE &gt; vec) const</td></tr>
+<tr class="memdesc:a35d31f3f4eb728f4e29d8f8a4ac071a0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix.html">Matrix</a> and vector multiplication.  <a href="#a35d31f3f4eb728f4e29d8f8a4ac071a0">More...</a><br /></td></tr>
 <tr class="separator:a35d31f3f4eb728f4e29d8f8a4ac071a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34f798b85b33fbbd21cbbf6694df6f5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; T, SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a34f798b85b33fbbd21cbbf6694df6f5a">hadamard</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; T, SIZE &gt; &amp;arg) const</td></tr>
+<tr class="memdesc:a34f798b85b33fbbd21cbbf6694df6f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates Hadamard product.  <a href="#a34f798b85b33fbbd21cbbf6694df6f5a">More...</a><br /></td></tr>
 <tr class="separator:a34f798b85b33fbbd21cbbf6694df6f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -113,7 +117,7 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00085">85</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00082">82</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -135,7 +139,23 @@ template&lt;typename T, int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00177">177</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p>Calculates Hadamard product. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>matrix data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>matrix size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Matrix&lt;T, SIZE&gt; the Hadamard product </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00178">178</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -167,7 +187,24 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00047">47</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p>Gets specific matrix element. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>matrix data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>matrix size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>number of row -1 </td></tr>
+    <tr><td class="paramname">column</td><td>number of column -1 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>const T&amp; value of the element </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00043">43</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -206,7 +243,7 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00057">57</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00053">53</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -228,7 +265,23 @@ template&lt;typename T, int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00150">150</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p><a class="el" href="class_matrix.html">Matrix</a> and vector multiplication. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>vector data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>vector size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td>vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;T, SIZE&gt; result </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00149">149</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -250,7 +303,23 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00071">71</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p>Gets column of a matrix. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>number od column -1 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector&lt;T, SIZE&gt;&amp; a column </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00070">70</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -277,7 +346,7 @@ template&lt;typename T, int SIZE&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00016">16</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00015">15</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>

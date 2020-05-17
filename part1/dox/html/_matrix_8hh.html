@@ -100,9 +100,11 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ab07c1aa7a8aac172d97eb154ca3d5823"><td class="memTemplParams" colspan="2">template&lt;typename T , int SIZE&gt; </td></tr>
 <tr class="memitem:ab07c1aa7a8aac172d97eb154ca3d5823"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_matrix_8hh.html#ab07c1aa7a8aac172d97eb154ca3d5823">operator&gt;&gt;</a> (std::istream &amp;stream, <a class="el" href="class_matrix.html">Matrix</a>&lt; T, SIZE &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:ab07c1aa7a8aac172d97eb154ca3d5823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves values from input to the matrix.  <a href="#ab07c1aa7a8aac172d97eb154ca3d5823">More...</a><br /></td></tr>
 <tr class="separator:ab07c1aa7a8aac172d97eb154ca3d5823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3290a34182b6dbe495417443403d6689"><td class="memTemplParams" colspan="2">template&lt;typename T , int SIZE&gt; </td></tr>
 <tr class="memitem:a3290a34182b6dbe495417443403d6689"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_matrix_8hh.html#a3290a34182b6dbe495417443403d6689">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="class_matrix.html">Matrix</a>&lt; T, SIZE &gt; &amp;matrix)</td></tr>
+<tr class="memdesc:a3290a34182b6dbe495417443403d6689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the matrix to output stream.  <a href="#a3290a34182b6dbe495417443403d6689">More...</a><br /></td></tr>
 <tr class="separator:a3290a34182b6dbe495417443403d6689"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -151,7 +153,24 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00224">224</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p>Writes the matrix to output stream. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>matrix data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>matrix size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>output stream </td></tr>
+    <tr><td class="paramname">matrix</td><td>the matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::ostream&amp; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00227">227</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>
@@ -183,7 +202,24 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00206">206</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
+<p>Saves values from input to the matrix. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>matrix data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>matrix size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>input stream </td></tr>
+    <tr><td class="paramname">matrix</td><td>the matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::istream&amp; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_matrix_8hh_source.html#l00208">208</a> of file <a class="el" href="_matrix_8hh_source.html">Matrix.hh</a>.</p>
 
 </div>
 </div>

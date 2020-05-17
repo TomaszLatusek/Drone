@@ -5,7 +5,7 @@ digraph "Matrix::operator()"
   rankdir="LR";
   Node5 [label="Matrix::operator()",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="Matrix\< double, 3 \>\l::operator*",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a35d31f3f4eb728f4e29d8f8a4ac071a0"];
+  Node6 [label="Matrix\< double, 3 \>\l::operator*",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a35d31f3f4eb728f4e29d8f8a4ac071a0",tooltip="Matrix and vector multiplication. "];
   Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="Matrix\< double, 3 \>\l::hadamard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a34f798b85b33fbbd21cbbf6694df6f5a"];
+  Node7 [label="Matrix\< double, 3 \>\l::hadamard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix.html#a34f798b85b33fbbd21cbbf6694df6f5a",tooltip="Calculates Hadamard product. "];
 }

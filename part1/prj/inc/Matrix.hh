@@ -6,42 +6,38 @@
 #define ERR 0.000000001
 
 ///////////////////////////////////////////////////////////////////
-///////////////* Szablon klasy dla macierzy *//////////////////////
+////////////////////* Matrix class template *//////////////////////
 ///////////////////////////////////////////////////////////////////
 template <typename T, int SIZE>
 class Matrix{
-  /* macierz kwadratowa przedstawiona w postaci tablicy wektorow (kolumn)
-   * SIZE wektorow SIZE-wymiarowych*/
+  /* Squared matrix consisting of vectors (columns) */
 protected:
   Vector<T, SIZE> data[SIZE];
 
 public:
-  /* przeciazenia nawiasow do indeksowania */
+  /* getters overloads */
   const T &operator()(int row, int column) const;
   T &operator()(int row, int column);
-  /* do wyciagania kolumn macierzy */
   Vector<T, SIZE> &operator[](int index);
-  /* obliczanie wyznacznika macierzy */
+  
   T determinant() const;
-  /* mnozenie macierzy przez wektor */
   Vector<T, SIZE> operator*(Vector<T, SIZE> vec) const;
-  /* Hadamard */
   Matrix<T, SIZE> hadamard(const Matrix<T, SIZE> &arg) const;
 };
 
 
 
 ///////////////////////////////////////////////////////////////////
-////////////////////////* ciala metod *////////////////////////////
+////////////////////////////* methods *////////////////////////////
 ///////////////////////////////////////////////////////////////////
-/* Operator indeksowania macierzy.
- * Argumenty:
- *      row - nr wiersza - 1,
- *      column - nr kolumn - 1.
- * Zwraca:
- *      wartosc danego wyrazu macierzy
+/**
+ * @brief Gets specific matrix element
  * 
- * Wersja const
+ * @tparam T        matrix data type
+ * @tparam SIZE     matrix size
+ * @param row       number of row -1
+ * @param column    number of column -1
+ * @return const T& value of the element 
  */
 template <typename T, int SIZE>
 const T &Matrix<T, SIZE>::operator()(int row, int column) const
@@ -61,11 +57,14 @@ T &Matrix<T, SIZE>::operator()(int row, int column)
 
 
 
-/* Operator indeksowania kolumn macierzy.
- * Argumenty:
- *      index - nr kolumny -1.
- * Zwraca:
- *      wektor kolumny macierzy
+
+/**
+ * @brief Gets column of a matrix
+ * 
+ * @tparam T          data type
+ * @tparam SIZE       size
+ * @param index       number od column -1
+ * @return Vector<T, SIZE>&   a column
  */
 template <typename T, int SIZE>
 Vector<T, SIZE> &Matrix<T, SIZE>::operator[](int index)
@@ -74,25 +73,23 @@ Vector<T, SIZE> &Matrix<T, SIZE>::operator[](int index)
 }
 
 
-
-/* Realizuje obliczanie wyznacznika macierzy.
- * Argumenty:
- *    w domysle macierz
- * Zwraca:
- *    wyznacznik macierzy
- */using std::abs;
+/**
+ * @brief Calculates determinant of the matrix
+ * 
+ */
+using std::abs;
 template <typename T, int SIZE>
 T Matrix<T, SIZE>::determinant() const
 {
   Matrix<T, SIZE> copy = *this;
 
-  T temp1, temp2; //pomocnicze
-  int verseSwitch = 1; //zmiana znaku wyznacznika
-  T det;      //wyznacznik
+  T temp1, temp2; //temporary
+  int verseSwitch = 1; //determinant change +/-
+  T det;      //determinant
   int i, j;
 
-  /* Zamiana wierszy w przypadku,
-     * gdy pierwszy element jest zerem */
+  /* Switching verses when the first element 
+      is equal to zero */
   if (abs(copy(0, 0)) < ERR)
   {
     for (i = 0; i < SIZE; i++)
@@ -110,7 +107,7 @@ T Matrix<T, SIZE>::determinant() const
       }
     }
   }
-  /* Wlasciwa eliminacja */
+  /* Elimination */
   for (i = j = 0; i < SIZE - 1 && j < SIZE - 1; i++, j++)
   {
     for (int m = i + 1; m < SIZE; m++)
@@ -121,7 +118,7 @@ T Matrix<T, SIZE>::determinant() const
       }
     }
   }
-  /* Obliczzenie wyznacznika */
+  /* Calculating determinant */
   det = copy(0,0);
 
   for (i = j = 1; i < SIZE && j < SIZE; i++, j++)
@@ -139,12 +136,14 @@ T Matrix<T, SIZE>::determinant() const
 
 
 
-/* Realizuje mnozenie macierzy przez wektor.
- * Argumenty:
- *    niejawny wskaznik na klase Matrix - pierwszy skladnik mnozenia,
- *    vec - wektor, drugi skladnik mnozenia.
- * Zwraca:
- *    result - wektor wynikowy.
+
+/**
+ * @brief Matrix and vector multiplication
+ * 
+ * @tparam T        vector data type
+ * @tparam SIZE     vector size
+ * @param vec       vector
+ * @return Vector<T, SIZE>  result
  */
 template <typename T, int SIZE>
 Vector<T, SIZE> Matrix<T, SIZE>::operator*(Vector<T, SIZE> vec) const
@@ -153,7 +152,7 @@ Vector<T, SIZE> Matrix<T, SIZE>::operator*(Vector<T, SIZE> vec) const
 
   for (int i = 0; i < SIZE; i++)
   {
-    /* wyzerowanie */
+    /* makes it equal to 0 */
     result[i] = this->operator()(i, i) - this->operator()(i, i);
     for (int j = 0; j < SIZE; j++)
     {
@@ -166,12 +165,14 @@ Vector<T, SIZE> Matrix<T, SIZE>::operator*(Vector<T, SIZE> vec) const
 
 
 
-/* Realizuje mnozenie Hadamarda.
- * Argumenty:
- *    niejawny wskaznik na klase Matrix - pierwszy skladnik mnozenia,
- *    arg - macierz, drugi skladnik mnozenia.
- * Zwraca:
- *    result - macierz wynikowa.
+
+/**
+ * @brief Calculates Hadamard product
+ * 
+ * @tparam T         matrix data type
+ * @tparam SIZE      matrix size
+ * @param arg        matrix
+ * @return Matrix<T, SIZE>   the Hadamard product
  */
 template <typename T, int SIZE>
 Matrix<T, SIZE> Matrix<T, SIZE>::hadamard(const Matrix<T, SIZE> &arg) const
@@ -191,16 +192,17 @@ Matrix<T, SIZE> Matrix<T, SIZE>::hadamard(const Matrix<T, SIZE> &arg) const
 
 
 ///////////////////////////////////////////////////////////////////
-///////////* przeciazenia operatorow "strumieniowych" *////////////
+////////////////////* iostream overloads */////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-/* Realizuje wczytywanie wartosci wyrazow macierzy
- * ze standardowego wejscia.
- * Argumenty:
- *    stream - input stream,
- *    matrix - macierz.
- * Uwaga:
- *    na wejscie nalezy podac postac transponowana macierzy
+/**
+ * @brief Saves values from input to the matrix
+ * 
+ * @tparam T        matrix data type
+ * @tparam SIZE     matrix size
+ * @param stream    input stream
+ * @param matrix    the matrix
+ * @return std::istream& 
  */
 template <typename T, int SIZE>
 std::istream &operator>>(std::istream &stream, Matrix<T, SIZE> &matrix)
@@ -212,13 +214,14 @@ std::istream &operator>>(std::istream &stream, Matrix<T, SIZE> &matrix)
   return stream;
 }
 
-/* Realizuje wyswietlnie macierzy na ekranie.
- * Argumenty:
- *    stream - output stream,
- *    matrix - macierz.
- * Uwaga:
- *    wyswietla macierz oryginalna, nie transponowana 
- *    jak ta podana na wejsiu.
+/**
+ * @brief Writes the matrix to output stream
+ * 
+ * @tparam T        matrix data type
+ * @tparam SIZE     matrix size
+ * @param stream    output stream
+ * @param matrix    the matrix
+ * @return std::ostream& 
  */
 template <typename T, int SIZE>
 std::ostream &operator<<(std::ostream &stream, const Matrix<T, SIZE> &matrix)

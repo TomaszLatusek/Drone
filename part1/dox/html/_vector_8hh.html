@@ -92,15 +92,18 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:af2f46a28bf98b4145b052b5ce9a9e122"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_vector_8hh.html#af2f46a28bf98b4145b052b5ce9a9e122">Vector3D</a> = <a class="el" href="class_vector.html">Vector</a>&lt; double, 3 &gt;</td></tr>
+<tr class="memdesc:af2f46a28bf98b4145b052b5ce9a9e122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector3D alias.  <a href="#af2f46a28bf98b4145b052b5ce9a9e122">More...</a><br /></td></tr>
 <tr class="separator:af2f46a28bf98b4145b052b5ce9a9e122"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a27b28bd39e70c4b04e9d2f26fbf8b63c"><td class="memTemplParams" colspan="2">template&lt;typename T , int SIZE&gt; </td></tr>
 <tr class="memitem:a27b28bd39e70c4b04e9d2f26fbf8b63c"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_vector_8hh.html#a27b28bd39e70c4b04e9d2f26fbf8b63c">operator&gt;&gt;</a> (std::istream &amp;stream, <a class="el" href="class_vector.html">Vector</a>&lt; T, SIZE &gt; &amp;vec)</td></tr>
+<tr class="memdesc:a27b28bd39e70c4b04e9d2f26fbf8b63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves values from input to the vector.  <a href="#a27b28bd39e70c4b04e9d2f26fbf8b63c">More...</a><br /></td></tr>
 <tr class="separator:a27b28bd39e70c4b04e9d2f26fbf8b63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26d364a2c014ee9718f2cb93356507a6"><td class="memTemplParams" colspan="2">template&lt;typename T , int SIZE&gt; </td></tr>
 <tr class="memitem:a26d364a2c014ee9718f2cb93356507a6"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_vector_8hh.html#a26d364a2c014ee9718f2cb93356507a6">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="class_vector.html">Vector</a>&lt; T, SIZE &gt; &amp;vec)</td></tr>
+<tr class="memdesc:a26d364a2c014ee9718f2cb93356507a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the vector to output stream.  <a href="#a26d364a2c014ee9718f2cb93356507a6">More...</a><br /></td></tr>
 <tr class="separator:a26d364a2c014ee9718f2cb93356507a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
@@ -116,7 +119,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00234">234</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
+<p>Vector3D alias. </p>
+
+<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00267">267</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
 
 </div>
 </div>
@@ -149,7 +154,24 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00222">222</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
+<p>Writes the vector to output stream. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>vector data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>vector size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>output stream </td></tr>
+    <tr><td class="paramname">vec</td><td>the vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::ostream&amp; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00253">253</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
 
 </div>
 </div>
@@ -181,7 +203,24 @@ template&lt;typename T , int SIZE&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00201">201</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
+<p>Saves values from input to the vector. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>vector data type </td></tr>
+    <tr><td class="paramname">SIZE</td><td>vector size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>input stream </td></tr>
+    <tr><td class="paramname">vec</td><td>the vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::istream&amp; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_vector_8hh_source.html#l00222">222</a> of file <a class="el" href="_vector_8hh_source.html">Vector.hh</a>.</p>
 
 </div>
 </div>
