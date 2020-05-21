@@ -1,4 +1,5 @@
 #include "Prism.hh"
+#include "Matrix3D.hh"
 #include <fstream>
 
 using namespace std;
@@ -41,10 +42,33 @@ void Prism::draw(string filename) const
         cerr << "Unable to open drone file!" << endl;
         return;
     }
+    // Matrix3D rotation(angle);
 
     for (unsigned i = 0; i < points.size(); ++i)
     {
         outputFile << points[i] << endl;
+        if (i % 4 == 3) //triggers after every 4 points
+        {
+            outputFile << "#\n\n";
+        }
+        counterTotal++;
+    }
+}
+
+void Prism::followDrone(string filename,double angle,Vector3D translation)
+{
+    ofstream outputFile;
+    outputFile.open(filename);
+    if (!outputFile.is_open())
+    {
+        cerr << "Unable to open drone file!" << endl;
+        return;
+    }
+    Matrix3D rotation(angle);
+
+    for (unsigned i = 0; i < points.size(); ++i)
+    {
+        outputFile << (rotation * points[i]) + translation << endl;
         if (i % 4 == 3) //triggers after every 4 points
         {
             outputFile << "#\n\n";

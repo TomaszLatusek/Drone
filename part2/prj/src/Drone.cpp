@@ -75,9 +75,11 @@ void Drone::draw(std::string filename) const
         }
         counterTotal++;
     }
+    leftRotor->followDrone(kLPrismFile,angle,translation);
+    rightRotor->followDrone(kRPrismFile,angle,translation);
 
-    leftRotor->draw(kLPrismFile);
-    rightRotor->draw(kRPrismFile);
+    // leftRotor->draw(kLPrismFile);
+    // rightRotor->draw(kRPrismFile);
 }
 
 /**
@@ -99,6 +101,8 @@ void Drone::move(double angleXY, double distance)
         change[2] = distance * sin(angleXY);
     }
     translate(change);
+    leftRotor->translate(change);
+    rightRotor->translate(change);
 }
 
 /**
