@@ -1,10 +1,9 @@
-#include "Cuboid.hh"
+#include "Prism.hh"
 #include <fstream>
-
 
 using namespace std;
 
-Cuboid::Cuboid(std::string filename)
+Prism::Prism(std::string filename)
 {
     ifstream inputFile;
     inputFile.open(filename);
@@ -24,7 +23,7 @@ Cuboid::Cuboid(std::string filename)
     inputFile.close();
 }
 
-Cuboid::~Cuboid()
+Prism::~Prism()
 {
     for (int i = 0; i < points.size(); i++)
     {
@@ -33,7 +32,7 @@ Cuboid::~Cuboid()
     }
 }
 
-void Cuboid::draw(string filename) const
+void Prism::draw(string filename) const
 {
     ofstream outputFile;
     outputFile.open(filename);

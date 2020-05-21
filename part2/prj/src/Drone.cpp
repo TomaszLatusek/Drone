@@ -31,6 +31,9 @@ Drone::Drone() : angle{0}
         counterCurrent++;
     }
     inputFile.close();
+
+    leftRotor = new Prism(kModelPrismL);
+    rightRotor = new Prism(kModelPrismR);
 }
 
 /**
@@ -72,6 +75,9 @@ void Drone::draw(std::string filename) const
         }
         counterTotal++;
     }
+
+    leftRotor->draw(kLPrismFile);
+    rightRotor->draw(kRPrismFile);
 }
 
 /**

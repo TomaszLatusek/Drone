@@ -24,6 +24,8 @@ int main()
     link.AddFilename(kCuboidFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.AddFilename(kPoleFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.AddFilename(kRectangleFile.c_str(), PzG::LS_CONTINUOUS, 1);
+    link.AddFilename(kLPrismFile.c_str(), PzG::LS_CONTINUOUS, 1);
+    link.AddFilename(kRPrismFile.c_str(), PzG::LS_CONTINUOUS, 1);
     link.SetDrawingMode(PzG::DM_3D);
 
     //drawing time

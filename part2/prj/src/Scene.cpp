@@ -24,6 +24,10 @@ Scene::~Scene()
     delete drone;
     delete water;
     delete bottom;
+    for (int i = 0; i < objects.size(); i++)
+    {
+        objects.pop_back();
+    }
 }
 
 /**
@@ -49,7 +53,7 @@ void Scene::draw() const
 void Scene::initObstacles()
 {
     shared_ptr<Pole> pole = make_shared<Pole>();
-    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>();
+    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>(kModelCuboid);
     shared_ptr<Rectangle> rec = make_shared<Rectangle>();
 
     objects.push_back(pole);

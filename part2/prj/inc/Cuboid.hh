@@ -8,7 +8,7 @@ const std::string kCuboidFile("solid/cuboid.dat");
 
 class Cuboid: public Obstacle{
   public:
-    Cuboid();
+    Cuboid(std::string filename);
     virtual ~Cuboid() override;
     virtual void draw(std::string filename) const override;
 };
