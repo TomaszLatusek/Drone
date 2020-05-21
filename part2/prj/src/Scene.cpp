@@ -1,5 +1,4 @@
 #include "Scene.hh"
-#include <memory>
 
 using namespace std;
 
@@ -36,4 +35,24 @@ void Scene::draw() const
     drone->draw(kDroneFile);
     water->draw(kWaterFile);
     bottom->draw(kBottomFile);
+    // for(int i = 0; i < objects.size(); i++)
+    // {
+    //     objects[0]->draw(kRectangleFile);
+    // }
+    objects[0]->draw(kPoleFile);
+    objects[1]->draw(kCuboidFile);
+    objects[2]->draw(kRectangleFile);
+}
+
+
+
+void Scene::initObstacles()
+{
+    shared_ptr<Pole> pole = make_shared<Pole>();
+    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>();
+    shared_ptr<Rectangle> rec = make_shared<Rectangle>();
+
+    objects.push_back(pole);
+    objects.push_back(cuboid);
+    objects.push_back(rec);
 }

@@ -4,45 +4,17 @@
 #include <string>
 #include <chrono>
 #include <thread>
-
 #include "gnuplot_link.hh"
-#include "BottomSurface.hh"
-#include "WaterSurface.hh"
 #include "Scene.hh"
-#include "Obstacle.hh"
-
-#include "Cuboid.hh"
-#include "Pole.hh"
-#include "Rectangle.hh"
 
 using namespace std;
-
-
-
-void initObstacles(vector<shared_ptr<Obstacle>> objects)
-{
-    shared_ptr<Pole> pole = make_shared<Pole>();
-    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>();
-    shared_ptr<Rectangle> rec = make_shared<Rectangle>();
-
-    objects.push_back(pole);
-    objects.push_back(cuboid);
-    objects.push_back(rec);
-}
-
-
-
-
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono;      // nanoseconds, system_clock, seconds
 
 int main()
 {
-    using namespace std::this_thread; // sleep_for, sleep_until
-    using namespace std::chrono;      // nanoseconds, system_clock, seconds
-
-    vector<shared_ptr<Obstacle>> objects;
-    initObstacles(objects);
-    Scene* scene = new Scene; // Don't really know how to use it yet
-    PzG::GnuplotLink link;            // Variable needed for vizualization
+    Scene* scene = new Scene; 
+    PzG::GnuplotLink link;        // Variable needed for vizualization
     
     // gnuplot stuff
     link.Init();
@@ -55,11 +27,8 @@ int main()
     link.SetDrawingMode(PzG::DM_3D);
 
     //drawing time
+    scene->initObstacles();
     scene->draw();
-    for(int i = 0; i < objects.size(); i++)
-    {
-        objects[0]->draw(kRectangleFile);
-    }
 
     link.Draw(); // <- Here gnuplot draws what we saved to file
     cout << "Press ENTER to continue." << endl;
@@ -80,7 +49,7 @@ int main()
                  << endl
                  << "k - exit" << endl
                  << endl;
-            i--;
+            i--;    // doesn't show menu unless "m" is chosen
         }
         cout << "Your choice> ";
         cin >> option;
