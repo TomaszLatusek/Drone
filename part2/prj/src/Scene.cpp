@@ -53,7 +53,7 @@ void Scene::draw() const
 void Scene::initObstacles()
 {
     shared_ptr<Pole> pole = make_shared<Pole>();
-    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>(kModelCuboid);
+    shared_ptr<Cuboid> cuboid = make_shared<Cuboid>();
     shared_ptr<Rectangle> rec = make_shared<Rectangle>();
 
     objects.push_back(pole);
@@ -62,12 +62,13 @@ void Scene::initObstacles()
 }
 
 
-bool Scene::checkCollision(const Drone& drone) const
+bool Scene::checkCollision() const
 {
     for(const auto& obstacle : objects){
-        if(obstacle->checkCollision(drone))
+        if(obstacle->checkCollision(*drone))
         {
-            cout << "Przyjebales w cos" << endl;
+            cout << "Watch out! You almost hit a  "; obstacle->getName();
+            cout << endl;
             return 1;
         }
     }

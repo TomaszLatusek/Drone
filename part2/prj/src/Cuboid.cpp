@@ -4,10 +4,10 @@
 
 using namespace std;
 
-Cuboid::Cuboid(std::string filename)
+Cuboid::Cuboid()
 {
     ifstream inputFile;
-    inputFile.open(filename);
+    inputFile.open(kModelCuboid);
     if (!inputFile.is_open())
     {
         cerr << "Unable to load model Drone file!"
@@ -58,7 +58,7 @@ void Cuboid::draw(string filename) const
 bool Cuboid::checkCollision(const Drone &drone) const
 {
     double maxXob, maxYob, maxZob;
-           maxXob = maxYob = maxZob = 0;
+           maxXob = maxYob = maxZob = -500;
     double minXob, minYob, minZob;
            minXob = minYob = minZob = 500;
 
@@ -85,15 +85,15 @@ bool Cuboid::checkCollision(const Drone &drone) const
     }
 
     double maxXdr, maxYdr, maxZdr;
-        maxXdr = maxYdr = maxZdr = 0;
+        maxXdr = maxYdr = maxZdr = -500;
     double minXdr, minYdr, minZdr;
         minXdr = minYdr = minZdr = 500;
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < drone.contour.size(); i++)
     {
-        double X = drone.contour->getVector(i)[0];
-        double Y = drone.contour->getVector(i)[1];
-        double Z = drone.contour->getVector(i)[2];
+        double X = drone.contour[i][0];
+        double Y = drone.contour[i][1];
+        double Z = drone.contour[i][2];
         
         if(maxXdr < X){
             maxXdr = X;
@@ -115,17 +115,31 @@ bool Cuboid::checkCollision(const Drone &drone) const
         }
     }
 
-    for(int i = 0; i < 8; i++){
-        double X = drone.contour->getVector(i)[0];
-        double Y = drone.contour->getVector(i)[1];
-        double Z = drone.contour->getVector(i)[2];
-        if(X < maxXdr && X > minXob &&
-           Y < maxYdr && Y > minYob &&
-           Z < maxZdr && Z > minZob){
-               cerr << "[!]Collision detected." << endl;
-               return 1;
+     int counter = 0;
+    //X
+    for(int i = minXob; i <= maxXob; i++){
+        if(i <= maxXdr && i >= minXdr){
+            counter++;
+            break;
+        }
+    }
+    //Y
+    for(int i = minYob; i <= maxYob; i++){
+        if(i <= maxYdr && i >= minYdr){
+            counter++;
+            break;
+        }
+    }
+    //Z
+    for(int i = minZob; i <= maxZob; i++){
+        if(i <= maxZdr && i >= minZdr){
+            counter++;
+            break;
         }
     }
 
+    if(counter >= 3){
+        return 1;
+    }else return 0;
     return 0;
 }

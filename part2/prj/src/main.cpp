@@ -88,7 +88,7 @@ int main()
                     {scene->moveDrone(angleXY, 1);}
                 else{scene->moveDrone(angleXY, -1);}
                 // checking the height
-                if(!scene->dronePosition()){
+                if(!scene->dronePosition()&&!scene->checkCollision()){
                     scene->drawDrone();
                     link.Draw();
                     sleep_for(milliseconds(5));

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Shape.hh"
-#include "Cuboid.hh"
+//#include "Cuboid.hh"
 #include "Prism.hh"
 #include <cmath>
 
@@ -13,7 +13,7 @@ class Drone: public Shape{
     Prism* rightRotor;
     double angle;
 public:
-    Cuboid* contour;
+    std::vector<Vector3D> contour;
     Drone();
     virtual ~Drone() override;
     virtual void draw(std::string filename) const override;

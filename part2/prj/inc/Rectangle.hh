@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Shape.hh"
 #include "Obstacle.hh"
 
 const std::string kModelRectangle("solid/rectangleRead.dat");
@@ -12,4 +11,5 @@ class Rectangle: public Obstacle{
     virtual ~Rectangle() override;
     virtual void draw(std::string filename) const override;
     virtual bool checkCollision(const Drone& drone) const;
+    virtual void getName() const{std::cout << "rectangle";};
 };

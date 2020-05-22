@@ -34,7 +34,20 @@ Drone::Drone() : angle{0}
 
     leftRotor = new Prism;
     rightRotor = new Prism;
-    contour = new Cuboid("solid/contour.dat");
+
+    inputFile.open("solid/contour.dat");
+    if (!inputFile.is_open())
+    {
+        cerr << "Unable to load model Drone file!"
+             << endl;
+        return;
+    }
+    while (inputFile >> point)
+    {
+        contour.push_back(point);
+    }
+    inputFile.close();
+    
 }
 
 /**
@@ -99,7 +112,12 @@ void Drone::move(double angleXY, double distance)
         change[2] = distance * sin(angleXY);
     }
     translate(change);
-    contour->translate(change);
+
+    for (int i = 0; i < contour.size(); i++)
+    {
+        contour[i] = contour[i] + change;
+    }
+    
 }
 
 /**

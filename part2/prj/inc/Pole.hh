@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Shape.hh"
 #include "Obstacle.hh"
 
 const std::string kModelPole("solid/poleRead.dat");
@@ -12,4 +11,5 @@ class Pole: public Obstacle{
     virtual ~Pole() override;
     virtual void draw(std::string filename) const override;
     virtual bool checkCollision(const Drone& drone) const;
+    virtual void getName() const{std::cout << "pole";};
 };

@@ -26,5 +26,5 @@ class Scene{
             {drone->move(angle,distance);};
         bool dronePosition() const {drone->position();};
         void initObstacles();
-        bool checkCollision(const Drone& drone) const;
+        bool checkCollision() const;
 };

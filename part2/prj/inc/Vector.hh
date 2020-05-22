@@ -14,6 +14,7 @@ public:
 /* operation overloads */
   Vector<T, SIZE> operator+(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator-(Vector<T, SIZE> vec2) const;
+  Vector<T, SIZE> operator-(T arg) const;
   T operator*(Vector<T, SIZE> vec2) const;
   Vector<T, SIZE> operator*(T arg);
   Vector<T, SIZE> operator/(T arg) const;
@@ -107,6 +108,26 @@ Vector<T, SIZE> Vector<T, SIZE>::operator-(Vector<T, SIZE> vec2) const
 }
 
 
+
+/**
+ * @brief Normal subtraction
+ * 
+ * @tparam T         vector data type
+ * @tparam SIZE      vector size
+ * @param vec2        vector
+ * @return Vector<T, SIZE>  difference
+ */
+template <typename T, int SIZE> 
+Vector<T, SIZE> Vector<T, SIZE>::operator-(T arg) const
+{
+  Vector<T, SIZE> result;
+  for (int i = 0; i < SIZE; i++)
+  {
+    result[i] = coordinates[i] - arg;
+  }
+
+  return result;
+}
 
 
 /**
