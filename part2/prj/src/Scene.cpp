@@ -60,3 +60,16 @@ void Scene::initObstacles()
     objects.push_back(cuboid);
     objects.push_back(rec);
 }
+
+
+bool Scene::checkCollision(const Drone& drone) const
+{
+    for(const auto& obstacle : objects){
+        if(obstacle->checkCollision(drone))
+        {
+            cout << "Przyjebales w cos" << endl;
+            return 1;
+        }
+    }
+    return 0;
+}

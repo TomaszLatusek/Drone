@@ -32,8 +32,9 @@ Drone::Drone() : angle{0}
     }
     inputFile.close();
 
-    leftRotor = new Prism(kModelPrismL);
-    rightRotor = new Prism(kModelPrismR);
+    leftRotor = new Prism;
+    rightRotor = new Prism;
+    contour = new Cuboid("solid/contour.dat");
 }
 
 /**
@@ -64,7 +65,7 @@ void Drone::draw(std::string filename) const
         return;
     }
 
-    Matrix3D rotation(angle);
+    Matrix3D rotation('z',angle);
 
     for (unsigned i = 0; i < points.size(); ++i)
     {
@@ -77,9 +78,6 @@ void Drone::draw(std::string filename) const
     }
     leftRotor->followDrone(kLPrismFile,angle,translation);
     rightRotor->followDrone(kRPrismFile,angle,translation);
-
-    // leftRotor->draw(kLPrismFile);
-    // rightRotor->draw(kRPrismFile);
 }
 
 /**
@@ -101,8 +99,7 @@ void Drone::move(double angleXY, double distance)
         change[2] = distance * sin(angleXY);
     }
     translate(change);
-    leftRotor->translate(change);
-    rightRotor->translate(change);
+    contour->translate(change);
 }
 
 /**
@@ -119,7 +116,7 @@ bool Drone::position() const
         cout << "You made it to the surface!" << endl;
         return 1;
     }
-    else if (translation[2] <= -200) //-200 is the bottom level
+    else if (translation[2] <= -180) //-200 is the bottom level
     {
         cout << "You hit the bottom!" << endl;
         return 1;

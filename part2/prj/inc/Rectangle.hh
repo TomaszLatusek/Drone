@@ -11,4 +11,5 @@ class Rectangle: public Obstacle{
     Rectangle();
     virtual ~Rectangle() override;
     virtual void draw(std::string filename) const override;
+    virtual bool checkCollision(const Drone& drone) const;
 };

@@ -13,6 +13,7 @@ class Drone: public Shape{
     Prism* rightRotor;
     double angle;
 public:
+    Cuboid* contour;
     Drone();
     virtual ~Drone() override;
     virtual void draw(std::string filename) const override;

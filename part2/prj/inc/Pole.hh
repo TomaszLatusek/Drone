@@ -11,4 +11,5 @@ class Pole: public Obstacle{
     Pole();
     virtual ~Pole() override;
     virtual void draw(std::string filename) const override;
+    virtual bool checkCollision(const Drone& drone) const;
 };
