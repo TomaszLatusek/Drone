@@ -29,7 +29,6 @@ int main()
     link.SetDrawingMode(PzG::DM_3D);
 
     //drawing time
-    scene->initObstacles();
     scene->draw();
 
     link.Draw(); // <- Here gnuplot draws what we saved to file
@@ -87,7 +86,7 @@ int main()
                 if(distance > 0)
                     {scene->moveDrone(angleXY, 1);}
                 else{scene->moveDrone(angleXY, -1);}
-                // checking the height
+                // checking the height and collision
                 if(!scene->dronePosition()&&!scene->checkCollision()){
                     scene->drawDrone();
                     link.Draw();

@@ -4,13 +4,19 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Prism:: Prism object
+ * 
+ * Sets angle value to 0 by default.
+ * Initializes points with values from solid/prismX.dat
+ */
 Prism::Prism() : angleX{0}
 {
     ifstream inputFile;
     inputFile.open(kModelPrism);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Drone file!"
+        cerr << "Unable to load model Prism file!"
              << endl;
         return;
     }
@@ -24,6 +30,10 @@ Prism::Prism() : angleX{0}
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Prism:: Prism object
+ * 
+ */
 Prism::~Prism()
 {
     for (int i = 0; i < points.size(); i++)
@@ -33,6 +43,13 @@ Prism::~Prism()
     }
 }
 
+/**
+ * @brief Translates rotor(prism) by a tiny bit just to 
+ *        nicely fit the hull
+ * 
+ * @param y             depends whether it's left or right rotor
+ * @return Vector3D     translation
+ */
 Vector3D Prism::fitToDrone(double y) const
 {
     Vector3D change;
@@ -43,13 +60,20 @@ Vector3D Prism::fitToDrone(double y) const
     return change;
 }
 
+/**
+ * @brief Makes rotors go the same way the hull goes
+ * 
+ * @param filename different for left and right rotor
+ * @param angleZ   angle of rotation
+ * @param change   main translation
+ */
 void Prism::followDrone(string filename, double angleZ, Vector3D change)
 {
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Prism file!" << endl;
         return;
     }
 

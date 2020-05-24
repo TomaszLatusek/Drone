@@ -4,13 +4,18 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Cuboid:: Cuboid object
+ * 
+ * Initializes points with values from solid/cuboidRead.dat
+ */
 Cuboid::Cuboid()
 {
     ifstream inputFile;
     inputFile.open(kModelCuboid);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Drone file!"
+        cerr << "Unable to load model Cuboid file!"
              << endl;
         return;
     }
@@ -24,6 +29,10 @@ Cuboid::Cuboid()
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Cuboid:: Cuboid object
+ * 
+ */
 Cuboid::~Cuboid()
 {
     for (int i = 0; i < points.size(); i++)
@@ -33,13 +42,18 @@ Cuboid::~Cuboid()
     }
 }
 
+/**
+ * @brief Saves points values to a new file which gnuplot can use
+ * 
+ * @param filename name of the file you want gnuplot to draw from
+ */
 void Cuboid::draw(string filename) const
 {
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Cuboid file!" << endl;
         return;
     }
 
@@ -54,7 +68,13 @@ void Cuboid::draw(string filename) const
     }
 }
 
-
+/**
+ * @brief Calculates whether drone and objects collide
+ * 
+ * @param drone 
+ * @return true     if there's a collision
+ * @return false    if there's no collision
+ */
 bool Cuboid::checkCollision(const Drone &drone) const
 {
     double maxXob, maxYob, maxZob;
@@ -141,5 +161,4 @@ bool Cuboid::checkCollision(const Drone &drone) const
     if(counter >= 3){
         return 1;
     }else return 0;
-    return 0;
 }

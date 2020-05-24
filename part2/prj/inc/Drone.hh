@@ -1,13 +1,16 @@
 #pragma once
 
 #include "Shape.hh"
-//#include "Cuboid.hh"
 #include "Prism.hh"
 #include <cmath>
 
 const std::string kModelDrone("solid/model.dat");
 const std::string kDroneFile("solid/drone.dat");
 
+/**
+ * @brief Represents a drone with 2 rotors
+ * 
+ */
 class Drone: public Shape{
     Prism* leftRotor;
     Prism* rightRotor;

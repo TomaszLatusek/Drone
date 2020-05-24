@@ -3,13 +3,18 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Rectangle:: Rectangle object
+ * 
+ * Initializes points with values from solid/RectangleRead.dat
+ */
 Rectangle::Rectangle()
 {
     ifstream inputFile;
     inputFile.open(kModelRectangle);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Drone file!"
+        cerr << "Unable to load model Rectangle file!"
              << endl;
         return;
     }
@@ -23,6 +28,10 @@ Rectangle::Rectangle()
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Rectangle:: Rectangle object
+ * 
+ */
 Rectangle::~Rectangle()
 {
     for (int i = 0; i < points.size(); i++)
@@ -32,14 +41,18 @@ Rectangle::~Rectangle()
     }
 }
 
-
+/**
+ * @brief Saves points values to a new file which gnuplot can use
+ * 
+ * @param filename name of the file you want gnuplot to draw from
+ */
 void Rectangle::draw(string filename) const
 {
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Rectangle file!" << endl;
         return;
     }
 
@@ -54,7 +67,13 @@ void Rectangle::draw(string filename) const
     }
 }
 
-
+/**
+ * @brief Calculates whether drone and objects collide
+ * 
+ * @param drone 
+ * @return true     if there's a collision
+ * @return false    if there's no collision
+ */
 bool Rectangle::checkCollision(const Drone &drone) const
 {
     double maxXob, maxYob, maxZob;

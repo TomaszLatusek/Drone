@@ -1,0 +1,19 @@
+digraph "Scene::drawDrone"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node17 [label="Scene::drawDrone",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="Drone::draw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#a525fce7815e8e3d5375742f5923f5f3b",tooltip="Saves rotated and translated points to a new file. "];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="Prism::followDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_prism.html#aabd5a05cf03a27b131508430ac776e17",tooltip="Makes rotors go the same way the hull goes. "];
+  Node19 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="Prism::fitToDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_prism.html#a85fea188069323e696f733a629f8db58",tooltip="Translates rotor(prism) by a tiny bit just to nicely fit the hull. "];
+  Node18 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="kLPrismFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_prism_8hh.html#aa1ed13f87abfed59dda997698b61a2a8"];
+  Node18 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="kRPrismFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_prism_8hh.html#a422866887c0da6cfa09cdef11f74c058"];
+  Node17 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="kDroneFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_drone_8hh.html#a7205245b9f08656c9a7818d1b5cea35b"];
+}

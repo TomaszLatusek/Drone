@@ -1,0 +1,15 @@
+digraph "Drone::draw"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node5 [label="Drone::draw",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Prism::followDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_prism.html#aabd5a05cf03a27b131508430ac776e17",tooltip="Makes rotors go the same way the hull goes. "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Prism::fitToDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_prism.html#a85fea188069323e696f733a629f8db58",tooltip="Translates rotor(prism) by a tiny bit just to nicely fit the hull. "];
+  Node5 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="kLPrismFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_prism_8hh.html#aa1ed13f87abfed59dda997698b61a2a8"];
+  Node5 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="kRPrismFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_prism_8hh.html#a422866887c0da6cfa09cdef11f74c058"];
+}

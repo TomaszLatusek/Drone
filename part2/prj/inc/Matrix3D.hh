@@ -3,8 +3,11 @@
 #include "Matrix.hh"
 #include <cmath>
 
-class Matrix3D : public Matrix<double, 3>
-{
+/**
+ * @brief a.k.a. Matrix<double,3>
+ * 
+ */
+class Matrix3D : public Matrix<double, 3>{
 public:
     /**
  * @brief Construct a new Matrix3D object

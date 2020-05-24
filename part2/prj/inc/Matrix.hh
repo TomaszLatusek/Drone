@@ -8,9 +8,14 @@
 ///////////////////////////////////////////////////////////////////
 ////////////////////* Matrix class template *//////////////////////
 ///////////////////////////////////////////////////////////////////
+/**
+ * @brief  Squared matrix consisting of vectors (columns) 
+ * 
+ * @tparam T      matrix data type 
+ * @tparam SIZE   matrix size
+ */
 template <typename T, int SIZE>
 class Matrix{
-  /* Squared matrix consisting of vectors (columns) */
 protected:
   Vector<T, SIZE> data[SIZE];
 

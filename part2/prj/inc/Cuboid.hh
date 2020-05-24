@@ -5,6 +5,10 @@
 const std::string kModelCuboid("solid/cuboidRead.dat");
 const std::string kCuboidFile("solid/cuboid.dat");
 
+/**
+ * @brief 3D type of obstacle
+ * 
+ */
 class Cuboid: public Obstacle{
   public:
     Cuboid();

@@ -5,6 +5,10 @@
 const std::string kModelRectangle("solid/rectangleRead.dat");
 const std::string kRectangleFile("solid/rectangle.dat");
 
+/**
+ * @brief 2D type of obstacle
+ * 
+ */
 class Rectangle: public Obstacle{
   public:
     Rectangle();

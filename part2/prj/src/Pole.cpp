@@ -3,13 +3,18 @@
 
 using namespace std;
 
+/**
+ * @brief Construct a new Pole:: Pole object
+ * 
+ *  Initializes points with values from solid/poleRead.dat
+ */
 Pole::Pole()
 {
     ifstream inputFile;
     inputFile.open(kModelPole);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Drone file!"
+        cerr << "Unable to load model Pole file!"
              << endl;
         return;
     }
@@ -23,6 +28,10 @@ Pole::Pole()
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Pole:: Pole object
+ * 
+ */
 Pole::~Pole()
 {
     for (int i = 0; i < points.size(); i++)
@@ -32,13 +41,18 @@ Pole::~Pole()
     }
 }
 
+/**
+ * @brief Saves points values to a new file which gnuplot can use
+ * 
+ * @param filename name of the file you want gnuplot to draw from
+ */
 void Pole::draw(string filename) const
 {
     ofstream outputFile;
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Pole file!" << endl;
         return;
     }
 
@@ -50,10 +64,13 @@ void Pole::draw(string filename) const
 }
 
 
-
-
-
-
+/**
+ * @brief Calculates whether drone and objects collide
+ * 
+ * @param drone 
+ * @return true     if there's a collision
+ * @return false    if there's no collision
+ */
 bool Pole::checkCollision(const Drone &drone) const
 {
     double maxXob, maxYob, maxZob;

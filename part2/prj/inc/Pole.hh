@@ -5,6 +5,10 @@
 const std::string kModelPole("solid/poleRead.dat");
 const std::string kPoleFile("solid/pole.dat");
 
+/**
+ * @brief 1D type of obstacle
+ * 
+ */
 class Pole: public Obstacle{
   public:
     Pole();

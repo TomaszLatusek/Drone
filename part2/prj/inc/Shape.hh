@@ -3,6 +3,10 @@
 #include <vector>
 #include "Vector.hh"
 
+/**
+ * @brief Base class every drawable(?) element inherits from
+ * 
+ */
 class Shape{
 protected:
     std::vector<Vector3D> points;

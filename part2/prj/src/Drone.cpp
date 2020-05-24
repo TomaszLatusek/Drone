@@ -10,6 +10,7 @@ using namespace std;
 
 /**
  * @brief Construct a new Drone:: Drone object
+ * 
  * Sets angle value to 0 by default.
  * Initializes points with values from solid/model.dat
  */
@@ -38,7 +39,7 @@ Drone::Drone() : angle{0}
     inputFile.open("solid/contour.dat");
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Drone file!"
+        cerr << "Unable to load \"collision cage\" file!"
              << endl;
         return;
     }
@@ -61,6 +62,8 @@ Drone::~Drone()
         points.pop_back();
         counterCurrent--;
     }
+    delete rightRotor;
+    delete leftRotor;
 }
 
 /**
@@ -74,7 +77,7 @@ void Drone::draw(std::string filename) const
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Drone file!" << endl;
         return;
     }
 
@@ -89,6 +92,7 @@ void Drone::draw(std::string filename) const
         }
         counterTotal++;
     }
+    // making rotors follow the hull
     leftRotor->followDrone(kLPrismFile,angle,translation);
     rightRotor->followDrone(kRPrismFile,angle,translation);
 }
@@ -113,6 +117,7 @@ void Drone::move(double angleXY, double distance)
     }
     translate(change);
 
+    // moves the "collision cage" around the drone
     for (int i = 0; i < contour.size(); i++)
     {
         contour[i] = contour[i] + change;

@@ -1,0 +1,17 @@
+digraph "Scene::rotateDrone"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node42 [label="Scene::rotateDrone",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node42 -> Node43 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="Drone::rotate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#ad5ec3aced3a3217ba58a081ea45a9995"];
+  Node43 -> Node44 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="Drone::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#a5f4be33d68625b88963079ef95ca1b6f",tooltip="Calculates the translation vector according to the rotation angle, rise/dive angle and the distance..."];
+  Node44 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="Shape::translate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shape.html#a135869c3223353a8f8fe1467889f355b"];
+  Node45 -> Node46 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="Shape::draw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shape.html#a43f482e9788a2ae60e0d93fef000aa19"];
+  Node43 -> Node47 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="Drone::position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#a2625161c13102f0524038adcae14f23e",tooltip="Used to stop the animation when it hits the bottom or reaches the surface. "];
+}

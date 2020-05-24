@@ -15,7 +15,7 @@ WaterSurface::WaterSurface()
     inputFile.open(kModelWater);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Surface file!"
+        cerr << "Unable to load model Water Surface file!"
              << endl;
         return;
     }
@@ -30,6 +30,10 @@ WaterSurface::WaterSurface()
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Water Surface:: Water Surface object
+ * 
+ */
 WaterSurface::~WaterSurface()
 {
     int z = points.size();
@@ -51,7 +55,7 @@ void WaterSurface::draw(std::string filename) const
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Water Surface file!" << endl;
         return;
     }
 

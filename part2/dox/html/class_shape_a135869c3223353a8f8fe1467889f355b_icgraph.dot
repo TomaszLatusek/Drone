@@ -1,0 +1,18 @@
+digraph "Shape::translate"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node12 [label="Shape::translate",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="Drone::move",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#a5f4be33d68625b88963079ef95ca1b6f",tooltip="Calculates the translation vector according to the rotation angle, rise/dive angle and the distance..."];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Drone::rotate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_drone.html#ad5ec3aced3a3217ba58a081ea45a9995"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="Scene::rotateDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_scene.html#aef6d27f1a488afc6d20cc1420a2d92ce"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4"];
+  Node13 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="Scene::moveDrone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_scene.html#abdd3ed21fded70669926780b2e76a81f"];
+  Node17 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

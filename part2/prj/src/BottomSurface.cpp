@@ -15,7 +15,7 @@ BottomSurface::BottomSurface()
     inputFile.open(kModelBottom);
     if (!inputFile.is_open())
     {
-        cerr << "Unable to load model Surface file!"
+        cerr << "Unable to load model Bottom file!"
              << endl;
         return;
     }
@@ -26,10 +26,13 @@ BottomSurface::BottomSurface()
         points.push_back(point);
         counterCurrent++;
     }
-    // counterTotal = counterCurrent;
     inputFile.close();
 }
 
+/**
+ * @brief Destroy the Bottom Surface:: Bottom Surface object
+ * 
+ */
 BottomSurface::~BottomSurface()
 {
     int z = points.size();
@@ -51,7 +54,7 @@ void BottomSurface::draw(std::string filename) const
     outputFile.open(filename);
     if (!outputFile.is_open())
     {
-        cerr << "Unable to open drone file!" << endl;
+        cerr << "Unable to open Bottom file!" << endl;
         return;
     }
 

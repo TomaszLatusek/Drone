@@ -10,7 +10,10 @@
 #include <vector>
 #include <memory>
 
-
+/**
+ * @brief Gathers all elements together
+ * 
+ */
 class Scene{
     Drone* drone;
     WaterSurface* water;
