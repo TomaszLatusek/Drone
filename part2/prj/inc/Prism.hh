@@ -11,7 +11,7 @@ const std::string kRPrismFile("solid/rotorRight.dat");
  * 
  */
 class Prism: public Shape{
-    double angleX;
+    double angleY;
 public:
     Prism();
     virtual ~Prism();

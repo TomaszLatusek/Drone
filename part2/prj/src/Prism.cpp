@@ -10,7 +10,7 @@ using namespace std;
  * Sets angle value to 0 by default.
  * Initializes points with values from solid/prismX.dat
  */
-Prism::Prism() : angleX{0}
+Prism::Prism() : angleY{0}
 {
     ifstream inputFile;
     inputFile.open(kModelPrism);
@@ -77,22 +77,22 @@ void Prism::followDrone(string filename, double angleZ, Vector3D change)
         return;
     }
 
-    if (angleX < 180) // rotor rotation angle
+    if (angleY < 180) // rotor rotation angle
     {
-        angleX += M_PI / 180;
+        angleY += M_PI / 180;
     }
     else
     {
-        angleX = 0;
+        angleY = 0;
     }
 
     Matrix3D rotationZ('z', angleZ);
-    Matrix3D rotationX('x', angleX);
+    Matrix3D rotationY('y', angleY);
     Vector3D v, w;
 
     for (unsigned i = 0; i < points.size(); ++i)
     {
-        v = rotationX * points[i];
+        v = rotationY * points[i];
         if (filename == "solid/rotorLeft.dat")
         {
             w = v + fitToDrone(20);

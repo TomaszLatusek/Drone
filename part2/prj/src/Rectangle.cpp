@@ -59,10 +59,6 @@ void Rectangle::draw(string filename) const
     for (unsigned i = 0; i < points.size(); ++i)
     {
         outputFile << points[i] << endl;
-        if (i % 4 == 3) //triggers after every 4 points
-        {
-            outputFile << "#\n\n";
-        }
         counterTotal++;
     }
 }

@@ -70,7 +70,7 @@ bool Scene::checkCollision() const
     for(const auto& obstacle : objects){
         if(obstacle->checkCollision(*drone))
         {
-            cout << "Watch out! You almost hit a  "; obstacle->getName();
+            cout << "[!] Watch out! You almost hit a  "; obstacle->getName();
             cout << endl;
             return 1;
         }

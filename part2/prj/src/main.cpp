@@ -92,7 +92,11 @@ int main()
                     link.Draw();
                     sleep_for(milliseconds(5));
                     sleep_until(system_clock::now());
-                } else break;
+                } else // move it back just a bit
+                 {
+                    scene->moveDrone(angleXY, -1);
+                    break;
+                 }
             }
             break;
         case 'm': // shows menu again
